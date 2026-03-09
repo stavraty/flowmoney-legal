@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — FlowMoney</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080c10;
+    --card: #0e1318;
+    --border: rgba(255,255,255,0.07);
+    --green: #3ddc6e;
+    --green-dim: rgba(61,220,110,0.10);
+    --text: #e8ede9;
+    --muted: #8a9690;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(61,220,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .nav-inner {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-row {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--green); }
+
+  .page-header {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .doc-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: var(--green-dim);
+    border: 1px solid rgba(61,220,110,0.18);
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-bottom: 18px;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 6vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .page-meta {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 48px;
+  }
+
+  .toc-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+
+  @media (max-width: 500px) {
+    .toc ol { grid-template-columns: 1fr; }
+  }
+
+  .toc li { counter-increment: toc; }
+
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    transition: color 0.2s;
+  }
+
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    color: var(--green);
+    font-size: 10px;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .toc a:hover { color: var(--text); }
+
+  .section {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--border);
+    animation: fadeUp 0.5s both;
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-num {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--green);
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: -0.2px;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .section p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  .section ul {
+    list-style: none;
+    margin: 8px 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .section ul li {
+    color: var(--muted);
+    font-size: 13px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .section ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    opacity: 0.6;
+  }
+
+  a.email-link {
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(61,220,110,0.3);
+    transition: border-color 0.2s;
+  }
+
+  a.email-link:hover { border-color: var(--green); }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    font-size: 11px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--green); }
+</style>
+</head>
+<body>
+
+<div class="nav-inner">
+  <div class="nav-row">
+    <a href="#" class="logo">FlowMoney</a>
+    <ul class="nav-links">
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="privacy.html" class="active">Privacy</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-header">
+    <div class="doc-badge">Legal</div>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Effective Date: March 7, 2026</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#s1">Information We Collect</a></li>
+      <li><a href="#s2">How We Use Your Info</a></li>
+      <li><a href="#s3">Data Storage</a></li>
+      <li><a href="#s4">Third-Party Services</a></li>
+      <li><a href="#s5">Data Sharing</a></li>
+      <li><a href="#s6">Data Retention</a></li>
+      <li><a href="#s7">Children's Privacy</a></li>
+      <li><a href="#s8">Your Rights</a></li>
+      <li><a href="#s9">Security</a></li>
+      <li><a href="#s10">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="section" id="s1" style="animation-delay:0.05s">
+    <div class="section-num">01</div>
+    <h2>Information We Collect</h2>
+    <p>FlowMoney is committed to protecting your privacy. We collect only what is necessary to provide the service:</p>
+    <ul>
+      <li>Account information: your name and email address provided via Sign in with Apple or Sign in with Google</li>
+      <li>Transaction data: amounts, categories, descriptions, and dates you enter manually</li>
+      <li>Space data: shared group names, member lists, and join codes</li>
+      <li>Device information: app version, operating system (for crash diagnostics only)</li>
+    </ul>
+    <p>We do not collect precise location data, payment card information, or browsing history.</p>
+  </div>
+
+  <div class="section" id="s2" style="animation-delay:0.10s">
+    <div class="section-num">02</div>
+    <h2>How We Use Your Information</h2>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Provide and sync your financial data across devices</li>
+      <li>Enable shared Spaces with other users</li>
+      <li>Process and validate Pro upgrade purchases via RevenueCat</li>
+      <li>Send important account or service-related notifications</li>
+      <li>Improve app performance and fix bugs</li>
+    </ul>
+  </div>
+
+  <div class="section" id="s3" style="animation-delay:0.15s">
+    <div class="section-num">03</div>
+    <h2>Data Storage</h2>
+    <p>Your data is stored securely in Google Firebase Firestore, hosted on Google Cloud infrastructure. Data is encrypted in transit and at rest. Firebase security rules ensure that only authenticated users can access their own data.</p>
+  </div>
+
+  <div class="section" id="s4" style="animation-delay:0.20s">
+    <div class="section-num">04</div>
+    <h2>Third-Party Services</h2>
+    <p>FlowMoney integrates with the following third-party services:</p>
+    <ul>
+      <li>Google Firebase — authentication and data storage</li>
+      <li>RevenueCat — in-app purchase management</li>
+      <li>Sign in with Apple — authentication</li>
+      <li>Sign in with Google — authentication</li>
+    </ul>
+    <p>We do not sell your personal data to any third party.</p>
+  </div>
+
+  <div class="section" id="s5" style="animation-delay:0.25s">
+    <div class="section-num">05</div>
+    <h2>Data Sharing</h2>
+    <p>We do not sell, trade, or rent your personal data. Your data may be shared only in the following cases:</p>
+    <ul>
+      <li>With other members of a shared Space — only the transaction and balance data you choose to add</li>
+      <li>With service providers listed above, solely to provide the app functionality</li>
+      <li>When required by law or to protect the rights and safety of users</li>
+    </ul>
+  </div>
+
+  <div class="section" id="s6" style="animation-delay:0.30s">
+    <div class="section-num">06</div>
+    <h2>Data Retention</h2>
+    <p>We retain your data for as long as your account is active. If you delete your account from Settings, all your personal data and transactions are permanently deleted from our servers within 30 days.</p>
+  </div>
+
+  <div class="section" id="s7" style="animation-delay:0.35s">
+    <div class="section-num">07</div>
+    <h2>Children's Privacy</h2>
+    <p>FlowMoney is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that a child has provided us with personal data, we will delete it promptly.</p>
+  </div>
+
+  <div class="section" id="s8" style="animation-delay:0.40s">
+    <div class="section-num">08</div>
+    <h2>Your Rights</h2>
+    <p>Depending on your location, you may have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your data</li>
+      <li>Withdraw consent at any time</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at: <a class="email-link" href="mailto:privatecapacity.dev@gmail.com">privatecapacity.dev@gmail.com</a></p>
+  </div>
+
+  <div class="section" id="s9" style="animation-delay:0.45s">
+    <div class="section-num">09</div>
+    <h2>Security</h2>
+    <p>We take reasonable measures to protect your information, including encrypted connections (TLS), Firebase security rules, and restricted access to production systems. However, no method of transmission over the internet is 100% secure.</p>
+  </div>
+
+  <div class="section" id="s10" style="animation-delay:0.50s">
+    <div class="section-num">10</div>
+    <h2>Contact Us</h2>
+    <p>If you have questions or concerns about this Privacy Policy, please contact us at: <a class="email-link" href="mailto:privatecapacity.dev@gmail.com">privatecapacity.dev@gmail.com</a></p>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">FlowMoney</span>
+  <ul class="footer-links">
+    <li><a href="terms.html">Terms of Service</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="mailto:privatecapacity.dev@gmail.com">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
