@@ -32,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* Grid background */
   body::before {
     content: '';
     position: fixed;
@@ -45,7 +44,6 @@
     z-index: 0;
   }
 
-  /* Glow orb */
   body::after {
     content: '';
     position: fixed;
@@ -65,22 +63,6 @@
     max-width: 720px;
     margin: 0 auto;
     padding: 0 24px 80px;
-  }
-
-  /* ── Nav ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 24px;
-    max-width: 720px;
-    margin: 0 auto;
-    border-bottom: 1px solid var(--border);
-    background: rgba(8,12,16,0.85);
-    backdrop-filter: blur(12px);
   }
 
   .nav-inner {
@@ -127,7 +109,6 @@
   .nav-links a:hover,
   .nav-links a.active { color: var(--green); }
 
-  /* ── Header ── */
   .page-header {
     padding: 56px 0 40px;
     border-bottom: 1px solid var(--border);
@@ -164,7 +145,6 @@
     letter-spacing: 0.04em;
   }
 
-  /* ── TOC ── */
   .toc {
     background: var(--card);
     border: 1px solid var(--border);
@@ -215,7 +195,6 @@
 
   .toc a:hover { color: var(--text); }
 
-  /* ── Sections ── */
   .section {
     margin-bottom: 44px;
     padding-bottom: 44px;
@@ -290,7 +269,6 @@
 
   a.email-link:hover { border-color: var(--green); }
 
-  /* ── Footer ── */
   footer {
     position: relative;
     z-index: 1;
@@ -391,20 +369,21 @@
   <div class="section" id="s4" style="animation-delay:0.20s">
     <div class="section-num">04</div>
     <h2>Free and Pro Plans</h2>
-    <p>FlowMoney offers a free plan with limited features and a one-time purchase FlowMoney Pro that unlocks:</p>
+    <p>FlowMoney offers a free plan with limited features and a FlowMoney Pro subscription that unlocks:</p>
     <ul>
       <li>Unlimited Spaces</li>
       <li>Unlimited transactions</li>
       <li>CSV export</li>
       <li>Advanced analytics</li>
     </ul>
-    <p>All purchases are final. Refunds are handled according to Apple App Store policies.</p>
+    <p>FlowMoney Pro includes a 7-day free trial, after which a monthly subscription fee applies. Pricing varies by region and is displayed in the App Store before purchase.</p>
+    <p>Your subscription will automatically renew each month unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription at any time via your Apple ID settings. Refunds are handled according to Apple App Store policies.</p>
   </div>
 
   <div class="section" id="s5" style="animation-delay:0.25s">
     <div class="section-num">05</div>
     <h2>User Data</h2>
-    <p>Your transaction data is stored securely in Google Firebase Firestore and is associated with your account. You may delete your account at any time from Settings, which will permanently remove your data.</p>
+    <p>Your transaction data is stored securely in Supabase and is associated with your account. You may delete your account at any time from Settings, which will permanently remove your data.</p>
   </div>
 
   <div class="section" id="s6" style="animation-delay:0.30s">
@@ -441,7 +420,7 @@
   <div class="section" id="s10" style="animation-delay:0.50s">
     <div class="section-num">10</div>
     <h2>Contact</h2>
-    <p>If you have questions about these Terms, please contact us at: <a class="email-link" href="mailto:privatecapacity.dev@gmail.com">privatecapacity.dev@gmail.com</a></p>
+    <p>If you have questions about these Terms, please contact us at: <a class="email-link" href="/cdn-cgi/l/email-protection#2757554e5146534244465746444e535e0943425167404a464e4b0944484a"><span class="__cf_email__" data-cfemail="95e5e7fce3f4e1f0f6f4e5f4f6fce1ecbbf1f0e3d5f2f8f4fcf9bbf6faf8">[email&#160;protected]</span></a></p>
   </div>
 </div>
 
@@ -449,10 +428,4 @@
   <span class="footer-logo">FlowMoney</span>
   <ul class="footer-links">
     <li><a href="terms.html">Terms of Service</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="mailto:privatecapacity.dev@gmail.com">Contact</a></li>
-  </ul>
-</footer>
-
-</body>
-</html>
+    <li
