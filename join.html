@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>FamMoney · Invitation</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; background: #f3f6fb; color: #17233b; }
+    main { box-sizing: border-box; margin: 24px; padding: 36px 24px; width: min(100% - 48px, 440px); background: white; border-radius: 28px; text-align: center; box-shadow: 0 16px 60px #17233b12; }
+    h1 { margin: 0 0 12px; font-size: 30px; }
+    p { line-height: 1.6; color: #536078; }
+    a, button { box-sizing: border-box; display: block; width: 100%; padding: 15px; margin-top: 12px; border: 0; border-radius: 14px; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+    a { background: #275ee8; color: white; }
+    button, .store { background: #edf1fa; color: #244783; }
+    #code { background: transparent; color: #275ee8; font: 700 28px ui-monospace, monospace; letter-spacing: 3px; overflow-wrap: anywhere; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 3px solid #e19b24; outline-offset: 4px; }
+    @media (prefers-color-scheme: dark) { body { background: #101725; color: #f4f6fb; } main { background: #1c2638; } p { color: #bac7dd; } button, .store { background: #2c3b55; color: #e4edff; } #code { color: #9dbbff; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>FamMoney</h1>
+    <p id="intro">You’re invited to a shared space.</p>
+    <div id="invite" hidden>
+      <a id="code" aria-label="Open invitation"></a>
+      <a id="open">Open FamMoney</a>
+      <button id="copy" type="button">Copy code</button>
+      <p id="hint">Install FamMoney, then return to this invitation or enter the code in Spaces.</p>
+    </div>
+    <p id="invalid" hidden>This invitation link is invalid. Ask the sender for a new link.</p>
+    <a class="store" id="store" href="https://apps.apple.com/us/app/fammoney-family-budgeting/id6760046968">Download on the App Store</a>
+    <p id="status" role="status" aria-live="polite"></p>
+  </main>
+  <script>
+    const translations = {
+      en: ['You’re invited to a shared space.', 'Open FamMoney', 'Copy code', 'Install FamMoney, then return to this invitation or enter the code in Spaces.', 'This invitation link is invalid. Ask the sender for a new link.', 'Download on the App Store', 'Code copied', 'Select and copy the code above.'],
+      uk: ['Вас запрошено до спільного простору.', 'Відкрити FamMoney', 'Копіювати код', 'Встановіть FamMoney, потім поверніться до запрошення або введіть код у розділі «Простори».', 'Недійсне посилання. Попросіть відправника надіслати нове запрошення.', 'Завантажити в App Store', 'Код скопійовано', 'Виділіть і скопіюйте код вище.'],
+      ru: ['Вас пригласили в общее пространство.', 'Открыть FamMoney', 'Копировать код', 'Установите FamMoney, затем вернитесь к приглашению или введите код в разделе «Пространства».', 'Недействительная ссылка. Попросите отправителя прислать новое приглашение.', 'Скачать в App Store', 'Код скопирован', 'Выделите и скопируйте код выше.'],
+      de: ['Du bist zu einem gemeinsamen Bereich eingeladen.', 'FamMoney öffnen', 'Code kopieren', 'Installiere FamMoney und kehre dann zur Einladung zurück oder gib den Code unter „Bereiche“ ein.', 'Dieser Einladungslink ist ungültig. Bitte um einen neuen Link.', 'Im App Store laden', 'Code kopiert', 'Markiere und kopiere den Code oben.'],
+      es: ['Te han invitado a un espacio compartido.', 'Abrir FamMoney', 'Copiar código', 'Instala FamMoney y vuelve a esta invitación o introduce el código en Espacios.', 'El enlace no es válido. Pide una nueva invitación.', 'Descargar en el App Store', 'Código copiado', 'Selecciona y copia el código de arriba.'],
+      fr: ['Vous êtes invité dans un espace partagé.', 'Ouvrir FamMoney', 'Copier le code', 'Installez FamMoney, puis revenez à cette invitation ou saisissez le code dans Espaces.', 'Ce lien est invalide. Demandez une nouvelle invitation.', 'Télécharger sur l’App Store', 'Code copié', 'Sélectionnez et copiez le code ci-dessus.'],
+      it: ['Sei invitato in uno spazio condiviso.', 'Apri FamMoney', 'Copia codice', 'Installa FamMoney, poi torna a questo invito o inserisci il codice in Spazi.', 'Link non valido. Chiedi un nuovo invito.', 'Scarica su App Store', 'Codice copiato', 'Seleziona e copia il codice qui sopra.'],
+      pl: ['Zaproszono Cię do wspólnej przestrzeni.', 'Otwórz FamMoney', 'Kopiuj kod', 'Zainstaluj FamMoney, a potem wróć do zaproszenia lub wpisz kod w sekcji Przestrzenie.', 'Link jest nieprawidłowy. Poproś o nowe zaproszenie.', 'Pobierz z App Store', 'Kod skopiowany', 'Zaznacz i skopiuj kod powyżej.'],
+      pt: ['Você recebeu um convite para um espaço compartilhado.', 'Abrir FamMoney', 'Copiar código', 'Instale o FamMoney e volte a este convite ou insira o código em Espaços.', 'Link inválido. Peça um novo convite.', 'Baixar na App Store', 'Código copiado', 'Selecione e copie o código acima.']
+    };
+    const language = (navigator.language || 'en').split('-')[0];
+    const words = translations[language] || translations.en;
+    document.documentElement.lang = translations[language] ? language : 'en';
+    const element = id => document.getElementById(id);
+    ['intro', 'open', 'copy', 'hint', 'invalid', 'store'].forEach((id, index) => { element(id).textContent = words[index]; });
+    const code = (new URLSearchParams(location.search).get('code') || '').trim().toUpperCase();
+    const valid = /^[A-Z0-9]{8}$/.test(code);
+    element('invite').hidden = !valid;
+    element('invalid').hidden = valid;
+    if (valid) {
+      const url = 'fammoney://join?code=' + encodeURIComponent(code);
+      element('code').textContent = code;
+      element('code').href = url;
+      element('code').setAttribute('aria-label', words[1] + ': ' + code);
+      element('open').href = url;
+      element('copy').addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(code);
+          element('status').textContent = words[6];
+        } catch {
+          const range = document.createRange();
+          range.selectNodeContents(element('code'));
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          element('status').textContent = words[7];
+        }
+      });
+    }
+  </script>
+</body>
+</html>
